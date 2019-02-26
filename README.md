@@ -34,11 +34,11 @@ import { Injectable } from '@nestjs/common';
 import { ConfigService } from 'nestjs-configure';
 
 @Injectable()
-    class TestService {
-        constructor(private config: ConfigService) {}
+class TestService {
+    constructor(private config: ConfigService) {}
 
-        getConfig() {
-            return this.config.getConfig();
-        }
+    getConfig() {
+        return this.config.getConfig();
     }
+}
 ```

@@ -1,6 +1,6 @@
 {
   "name": "nestjs-configure",
-  "version": "0.1.3",
+  "version": "0.1.1",
   "description": "config module for nestjs",
   "author": "xp-fly",
   "license": "MIT",
