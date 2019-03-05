@@ -37,6 +37,7 @@ describe('ConfigModule', () => {
         await app.init();
 
         const testService = module.get(TestService);
+        console.log(testService.getConfig())
         expect(testService.getConfig()).toBeInstanceOf(Object);
 
         await app.close();

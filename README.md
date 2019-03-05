@@ -8,13 +8,26 @@ config module for nestjs using dotenv and jsyaml
 
 ## Basic usage
 
-```bash
-/
-|-- .env
+use .env or bootstrap.yml manage config
 
-or 
-/
-|-- bootstrap.yml
+### .env
+
+```bash
+test=1
+ip=localhost
+```
+
+### bootstrap.yml
+
+```bash
+# bootstrap.yml
+this: is
+a:
+  - YAML
+  - example
+
+# config 
+{ this: 'is', a: [ 'YAML', 'example' ] }
 ```
 
 ```typescript

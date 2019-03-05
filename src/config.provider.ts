@@ -5,6 +5,7 @@ import * as path from 'path';
 import {ConfigFileNotFoundException} from "./config.exception";
 import {Provider} from "@nestjs/common";
 import {CONFIG_PROVIDER_TOKEN} from "./constant";
+import {readFileSync} from "fs";
 
 export interface ConfigInterface {
     [key: string]: any;
@@ -30,7 +31,7 @@ export class ConfigProvider {
                 throw new ConfigFileNotFoundException();
             }
         }
-        const extName = path.extname(filePath);
+        const extName = path.extname(filePath) || '.env';
         if (!extName || !['.env', '.yml'].includes(extName)) {
             throw new ConfigFileNotFoundException();
         }
@@ -39,7 +40,7 @@ export class ConfigProvider {
                 config = YAML.load(filePath);
                 break;
             case '.env':
-                config = dotenv.load(filePath);
+                config = dotenv.parse(readFileSync(filePath));
                 break;
             default:
                 throw new ConfigFileNotFoundException();
