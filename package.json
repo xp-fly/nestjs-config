@@ -1,10 +1,9 @@
 {
   "name": "nestjs-configure",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "config module for nestjs",
   "author": "xp-fly",
   "license": "MIT",
-  "main": "dist/index.js",
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "test": "jest --detectOpenHandles"
