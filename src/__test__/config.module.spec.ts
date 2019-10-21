@@ -2,6 +2,7 @@ import {Test, TestingModule} from "@nestjs/testing";
 import {ConfigModule} from "../config.module";
 import {Injectable} from "@nestjs/common";
 import {ConfigService} from "../config.service";
+import {resolve} from 'path';
 
 describe('ConfigModule', () => {
     it('configModule', async () => {
@@ -29,7 +30,7 @@ describe('ConfigModule', () => {
         }
 
         const module: TestingModule = await Test.createTestingModule({
-            imports: [ConfigModule.load()],
+            imports: [ConfigModule.load(), ConfigModule.load(resolve(__dirname, 'bootstrap.test.yml'), 'test')],
             providers: [TestService],
         }).compile();
 

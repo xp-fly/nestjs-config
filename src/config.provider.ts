@@ -21,7 +21,8 @@ export class ConfigProvider {
      * 加载配置文件
      * @param filePath
      */
-    public static load(filePath?: string): Provider {
+    public static load(filePath?: string, configName?: string): Provider {
+
         if (!filePath || !fs.existsSync(filePath)) {
             if (fs.existsSync(path.resolve(baseDir, 'bootstrap.yml'))) {
                 filePath = path.resolve(baseDir, 'bootstrap.yml');
@@ -35,16 +36,18 @@ export class ConfigProvider {
         if (!extName || !['.env', '.yml'].includes(extName)) {
             throw new ConfigFileNotFoundException();
         }
+        let temp = {};
         switch (extName) {
             case '.yml':
-                config = YAML.load(filePath);
+                temp = YAML.load(filePath);
                 break;
             case '.env':
-                config = dotenv.parse(readFileSync(filePath));
+                temp = dotenv.parse(readFileSync(filePath));
                 break;
             default:
                 throw new ConfigFileNotFoundException();
         }
+        config = configName ? {...config, [configName]: config} :  {...config, ...temp};
         return {
             provide: CONFIG_PROVIDER_TOKEN,
             useValue: config,

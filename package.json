@@ -1,6 +1,6 @@
 {
   "name": "nestjs-configure",
-  "version": "0.1.4",
+  "version": "0.1.7",
   "description": "config module for nestjs",
   "author": "xp-fly",
   "license": "MIT",
@@ -8,6 +8,7 @@
     "build": "tsc -p tsconfig.build.json",
     "test": "jest --detectOpenHandles"
   },
+  "main": "dist/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/xp-fly/nestjs-config.git"

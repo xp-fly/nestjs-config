@@ -5,13 +5,27 @@ import {ConfigService} from "./config.service";
 @Global()
 @Module({})
 export class ConfigModule {
-    public static load(filePath?: string): DynamicModule {
+    /**
+     * 返回模块，加载配置
+     * @param filePath
+     */
+    public static load(filePath?: string, configName?: string): DynamicModule {
         // 加载配置
-        ConfigProvider.load(filePath);
+        ConfigProvider.load(filePath, configName);
         return {
             module: ConfigModule,
             providers: [ConfigService],
             exports: [ConfigService],
         }
+    }
+
+    /**
+     * 直接读取配置文件获取配置
+     * @param key
+     */
+    public static get(key: string) {
+        // 加载配置
+        ConfigProvider.load();
+        return ConfigProvider.get(key);
     }
 }
