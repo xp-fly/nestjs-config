@@ -47,7 +47,7 @@ export class ConfigProvider {
             default:
                 throw new ConfigFileNotFoundException();
         }
-        config = configName ? {...config, [configName]: config} :  {...config, ...temp};
+        config = configName ? {...config, [configName]: temp} :  {...config, ...temp};
         return {
             provide: CONFIG_PROVIDER_TOKEN,
             useValue: config,

@@ -23,9 +23,9 @@ export class ConfigModule {
      * 直接读取配置文件获取配置
      * @param key
      */
-    public static get(key: string) {
+    public static get(key: string, options?: {filePath: string, configName: string}) {
         // 加载配置
-        ConfigProvider.load();
+        ConfigProvider.load(options.filePath, options.configName);
         return ConfigProvider.get(key);
     }
 }
